@@ -18,11 +18,11 @@ nodes = []
 edges = []
 type = []
 colors = {'manipulation': 'yellow',
-         'basic': 'green',
-         'multiple': 'blue',
-         'power': 'red',
-         'release': 'orange',
-         'impossible': 'pink'}
+          'basic': 'green',
+          'multiple': 'blue',
+          'power': 'red',
+          'release': 'orange',
+          'impossible': 'black'}
 
 for doc in docs:
     trick = doc.to_dict()
@@ -55,19 +55,21 @@ print(layout.coords)
 
 
 style = {}
-style['node_size'] = 0.3
+style['node_size'] = 0.2
 style['node_label'] = nodes
 style['node_color'] = [colors[g] for g in type]
 style['node_opacity'] = .5
 style['node_label_position'] = 'below'
-style['edge_curved'] = .1
-style['edge_width'] = .3
+style['node_label_size'] = 5
+style['edge_curved'] = .2
+style['edge_width'] = .2
 style['edge_opacity'] = .5
 style['edge_directed'] = [True for _ in nodes]
 
 # visual options
-style['canvas'] = (25, 25)
+style['canvas'] = (25, 35)
 style['layout'] = layout.coords
+style['margin'] = 1
 
 
 plot(net, 'network.tex', **style)
